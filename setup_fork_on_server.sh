@@ -4,7 +4,7 @@
 # This script handles the case where official version is already running
 
 SERVER="vps-72cad608.vps.ovh.net"
-USER="root"  # Change to "ubuntu" if needed
+USER="ubuntu"  # OVH cloud user
 BACKUP_DIR="/opt/gapps_official_backup"
 DEPLOY_DIR="/opt/gapps"
 REPO_URL="https://github.com/jaouhar1234/gapps.git"
