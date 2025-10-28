@@ -1,12 +1,15 @@
 #!/bin/bash
 
 # Deployment script for Gapps to Ubuntu Server
+# This script deploys YOUR FORK (jaouhar1234/gapps) to the server
+# NOT the official bmarsh9/gapps version
 # Server: vps-72cad608.vps.ovh.net
 
 SERVER="vps-72cad608.vps.ovh.net"
 DEPLOY_DIR="/opt/gapps"
 REPO_URL="https://github.com/jaouhar1234/gapps.git"
 BRANCH="claude/session-011CUZS6TekTatPWzDNK71Tn"
+# You can change to "main" if you want to deploy from main branch
 
 echo "======================================"
 echo "Deploying Gapps to $SERVER"
@@ -46,9 +49,10 @@ else
 fi
 "
 
-# Start the application
-echo "Starting application..."
-run_remote "cd $DEPLOY_DIR && docker-compose down && docker-compose up -d"
+# Build and start the application from YOUR fork
+echo "Building and starting application from YOUR fork..."
+echo "This will build the Docker image from source code in your fork"
+run_remote "cd $DEPLOY_DIR && docker-compose down && docker-compose build --no-cache && docker-compose up -d"
 
 # Check status
 echo "Checking application status..."

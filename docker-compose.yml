@@ -1,7 +1,9 @@
 services:
   app:
     container_name: app
-    image: app
+    # Building from YOUR fork: jaouhar1234/gapps
+    # This builds from source code, NOT the official Docker Hub image
+    image: gapps-jaouhar1234:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -33,8 +35,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-db1}
       POSTGRES_DB: ${POSTGRES_DB:-db1}
       PGDATA: /data/postgres
-    #volumes:
-    #   - postgres:/data/postgres
+    volumes:
+       - postgres:/data/postgres
     ports:
       - "5432:5432"
     networks:
@@ -47,4 +49,5 @@ networks:
   web_nw:
     driver: bridge
 volumes:
-  dbdata:
+  postgres:
+    driver: local
